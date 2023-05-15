@@ -7,7 +7,7 @@ class Task(models.Model):
     description = models.TextField(null=True)
     complete = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
-
+    # remember to make migrations whenever you make changes to your models
     def __str__(self):
         return self.title
     

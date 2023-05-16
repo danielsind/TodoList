@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from .models import Task
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your views here.
 class TaskList(ListView):
     model = Task

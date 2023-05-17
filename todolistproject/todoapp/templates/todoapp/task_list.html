@@ -7,7 +7,12 @@
     <title>task list</title>
 </head>
 <body>
+    {% if request.user.is_authenticated %}
     <p>{{request.user}}</p>
+    <a href="">Log out</a>
+    {% else %} 
+    <a href="">Log in</a>
+    {% endif %}
     <h1>My To-Do list</h1>
 
     <table>

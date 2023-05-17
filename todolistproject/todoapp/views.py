@@ -6,6 +6,7 @@ from .models import Task
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 class TaskList(ListView):
     model = Task

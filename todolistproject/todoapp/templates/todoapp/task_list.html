@@ -9,7 +9,7 @@
 <body>
     {% if request.user.is_authenticated %}
     <p>{{request.user}}</p>
-    <a href="">Log out</a>
+    <a href="{% url 'logout' %}">Log out</a>
     {% else %} 
     <a href="{% url 'login' %}">Log in</a>
     {% endif %}

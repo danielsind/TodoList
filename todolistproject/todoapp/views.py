@@ -1,4 +1,5 @@
 from typing import Any, Dict
+from django.forms.models import BaseModelForm
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic.list import ListView
@@ -15,8 +16,8 @@ class TaskList(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['task'] = context['task'].filter(user=self.request.user)
-        context['count'] = context['task'].filter(complete=False).count()
+        context['tasks'] = context['tasks'].filter(user=self.request.user)
+        context['count'] = context['tasks'].filter(complete=False).count()
         return context
     
 
@@ -29,6 +30,10 @@ class TaskCreate(LoginRequiredMixin,CreateView):
     model = Task
     fields = ['title', 'description']
     success_url = reverse_lazy('task')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(TaskCreate, self).form_valid(form)
 
 class TaskUpdate(LoginRequiredMixin,UpdateView):
     model = Task

@@ -22,13 +22,12 @@ class TaskList(LoginRequiredMixin, ListView):
         context['tasks'] = context['tasks'].filter(user=self.request.user)
         context['count'] = context['tasks'].filter(complete=False).count()
         
-        search_input = self.request.GET.get('search-area') or ''
+        search_input = self.request.GET.get('search') or ''
         if search_input:
-            context['task'] = context['task'].filter(title__icontains = search_input)
+            context['tasks'] = context['tasks'].filter(title__icontains = search_input)
             context['search_input'] = search_input
         return context
     
-
 class TaskDetail(LoginRequiredMixin,DetailView):
     model = Task
     context_object_name = 'task'
@@ -65,13 +64,13 @@ class RegisterPage(FormView):
     template_name = 'todoapp/register.html'
     form_class = UserCreationForm
     redirect_authenticated_user = True
-    success_url = reverse_lazy
+    success_url = reverse_lazy('task')
 
     def form_valid(self, form):
         user = form.save()
         if user is not None:
             login(self.request, user)
-            return super(RegisterPage, self).form_valid
+            return super(RegisterPage, self).form_valid(form)
     
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:

@@ -18,6 +18,7 @@ class TaskList(LoginRequiredMixin, ListView):
         context['task'] = context['task'].filter(user=self.request.user)
         context['count'] = context['task'].filter(complete=False).count()
         return context
+    
 
 class TaskDetail(LoginRequiredMixin,DetailView):
     model = Task

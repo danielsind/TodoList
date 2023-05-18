@@ -8,6 +8,9 @@ from .models import Task
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
+from django.views.generic.edit import FormView
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 class TaskList(LoginRequiredMixin, ListView):
@@ -52,4 +55,10 @@ class UserLoginView(LoginView):
 
     def get_success_url(self):
         return reverse_lazy('task')
+    
+class RegisterPage(FormView):
+    template_name = 'todoapp/register.html'
+    form_class = UserCreationForm
+    redirect_authenticated_user = True
+    success_url = reverse_lazy
     

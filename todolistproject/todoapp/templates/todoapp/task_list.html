@@ -14,7 +14,10 @@
     <a href="{% url 'login' %}">Log in</a>
     {% endif %}
     <h1>My To-Do list</h1>
-
+    <form action="" method="get">
+        <input type="text" name="search-area">
+        <input type="submit" name="search">
+    </form>
     <table>
         <tr>
             <th>Items</th>

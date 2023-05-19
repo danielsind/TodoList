@@ -9,14 +9,14 @@
             <div class="card-body p-5">
               <form class="mb-3 mt-md-4" action="" method="post">
                 <div class="mb-3">
-                    <h1 class="align-items-center vh-10 d-flex justify-content-center">Login</h1>                       
+                    <h1 class="align-items-center vh-10 d-flex justify-content-center">Sign-in</h1>                       
                 </div>
                 {% csrf_token%}
                 {{form.as_p}}
-                <input type="submit" value="login" class="btn-block text-center vh-40 btn btn-outline-primary">
+                <input type="submit" value="Sign-in" class="btn-block text-center vh-40 btn btn-outline-primary">
               </form>
               <div>
-                <p class="mb-0  text-center" >Don't have an account? <a href="{% url 'register' %}" class="text-primary fw-bold">Register</a></p>
+                <p class="mb-0  text-center" >Don't have an account? <a href="{% url 'register' %}" class="text-primary fw-bold">Sign-up</a></p>
             </div>
             </div>
           </div>

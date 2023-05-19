@@ -1,8 +1,11 @@
-    <h1>Task: {{task}}</h1>
+{% extends 'todoapp/main.html'%}
+
+{%block content%}
+   <h1>Task: {{task}}</h1>
     <p>Description: {{task.description}}</p>
     <p>Date: {{task.created}}</p>
     <p>Complete: {{task.complete}}</p>
 
     <td><a href="{% url 'task-update' task.id%}">update</a></td>
     <a href="{%url 'task'%}">Back</a>
-    
+{%endblock content%}  

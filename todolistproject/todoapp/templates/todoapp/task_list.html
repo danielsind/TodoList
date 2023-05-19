@@ -1,4 +1,6 @@
+{% extends 'todoapp/main.html'%}
 
+{%block content%}
     {% if request.user.is_authenticated %}
     <p>{{request.user}}</p>
     <a href="{% url 'logout' %}">Log out</a>
@@ -29,3 +31,4 @@
         <a href="{% url 'task-create' %}">Create task</a>
         {%endfor%}
     </table>
+{%endblock content%}

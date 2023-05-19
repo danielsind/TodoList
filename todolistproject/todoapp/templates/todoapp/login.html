@@ -1,7 +1,27 @@
-        <h1>Login</h1>
-        <form action="" method="post">
-            {% csrf_token%}
-            {{form.as_p}}
-            <input type="submit" value="login">
-        </form>
-        <p>Don't have an account? </p><a href="{% url 'register' %}">Register</a>
+{% extends 'todoapp/main.html'%}
+
+{%block content%}
+<div class="vh-100 d-flex justify-content-center align-items-center">
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+          <div class="card bg-white">
+            <div class="card-body p-5">
+              <form class="mb-3 mt-md-4" action="" method="post">
+                <div class="mb-3">
+                    <h1 class="align-items-center vh-10 d-flex justify-content-center">Login</h1>                       
+                </div>
+                {% csrf_token%}
+                {{form.as_p}}
+                <input type="submit" value="login" class="btn-block text-center vh-40 btn btn-outline-primary">
+              </form>
+              <div>
+                <p class="mb-0  text-center" >Don't have an account? <a href="{% url 'register' %}" class="text-primary fw-bold">Register</a></p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock content%}

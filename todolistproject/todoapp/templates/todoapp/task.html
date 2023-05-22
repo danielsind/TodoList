@@ -1,11 +1,16 @@
 {% extends 'todoapp/main.html'%}
 
 {%block content%}
-   <h1>Task: {{task}}</h1>
-    <p>Description: {{task.description}}</p>
-    <p>Date: {{task.created}}</p>
-    <p>Complete: {{task.complete}}</p>
-
+<div class="container task-wrapper">
+    <h1 class="task-title header-bar">{{task}} <br> </h1>
+    <div class=" container">
+        <p><br>Description: {{task.description}}</p>
+    <p><br>Date: {{task.created}}</p>
+    <p><br>Complete: {{task.complete}}</p>
     <td><a href="{% url 'task-update' task.id%}">update</a></td>
     <a href="{%url 'task'%}">Back</a>
+    </div>
+    
+</div>
 {%endblock content%}  
+

@@ -22,10 +22,10 @@
         <tr>
             <th>Items</th>
         </tr>
-        {% for task in tasks%} 
+            {% for task in tasks%} 
         <tr>
             <td>
-               {{task.id}}:  {{task.title}}
+               {{task.title}}
             </td>
             <td><a href="{% url 'task_detail' task.id %}">view</a></td>
             <td><a href="{% url 'task-update' task.id%}">update</a></td>
